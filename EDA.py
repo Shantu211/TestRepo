@@ -131,6 +131,7 @@ with col1:
                                     value = (2000,2022))
 
 with col2:
+    year_range
     st.write("""#### Popular songs year by year """)
     rating_count_year = df[df['top_year'].between(*year_range)]\
     .groupby('top_year')['track_popularity', 'track'].max()
