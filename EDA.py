@@ -133,7 +133,7 @@ with col1:
 with col2:
     year_range
     st.write("""#### Popular songs year by year """)
-    rating_count_year = df[df['top_year'].between(*year_range)]\
+    rating_count_year = df[(df['top_year'] >= year_range[0]) & (df['top_year'] <= year_range[1])]\
     .groupby('top_year')['track_popularity', 'track'].max()
     rating_count_year = rating_count_year.reset_index()
     figpx = px.line(rating_count_year, x = 'top_year', y = 'track_popularity', hover_data={'track':True})
@@ -149,7 +149,7 @@ with col1:
 
 with col2:
     st.write("""#### Track Feature year by year """)
-    rating_count_year = df[df['top_year'].between(*year_range)]\
+    rating_count_year = df[(df['top_year'] >= year_range[0]) & (df['top_year'] <= year_range[1])]\
     .groupby('top_year').max()
     rating_count_year = rating_count_year.reset_index()
     figpx = px.line(rating_count_year, x = 'top_year', y = compare_top_songs_feature, hover_data={'track':True})
