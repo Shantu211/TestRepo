@@ -134,7 +134,7 @@ with col2:
     year_range
     st.write("""#### Popular songs year by year """)
     rating_count_year = df[(df['top_year'] >= year_range[0]) & (df['top_year'] <= year_range[1])]\
-    .groupby('top_year')['track_popularity', 'track'].max()
+    .groupby('top_year')[['track_popularity', 'track']].max()
     rating_count_year = rating_count_year.reset_index()
     figpx = px.line(rating_count_year, x = 'top_year', y = 'track_popularity', hover_data={'track':True})
     figpx.update_traces(mode="markers+lines")
